@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.theme-btn{
+  margin-top: 10rem;
+  width: 70%;
+  padding: 16px;
+  cursor: pointer;
+}
+.dark{
+   background-color: black;
+   color:white;
+}

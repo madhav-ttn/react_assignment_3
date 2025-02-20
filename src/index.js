@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LoginProvider from './Context/provider/LoginProvider';
+import ThemeProvider from './Context/provider/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LoginProvider>
-       <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </LoginProvider>
   </React.StrictMode>
 );

@@ -1,14 +1,27 @@
 import { useContext} from "react"
-import { User } from "../Context/user";
+import { login } from "../Context/loginContext";
+import LoginSection from "./LoginSection";
+
 
 export default function UserProfile(){
-   const {username,setUserName,email,setEmail}=useContext(User);
+   const {isLoggedIn,username,handleUsername,email,handleEmail,handleLogin}=useContext(login);
     return(
         <div className="profile-section">
-            <input type="text"  placeholder="name" onChange={(e)=>setUserName(e.target.value)}/>
-            <input type="text"  placeholder="email" onChange={(e)=>setEmail(e.target.value)}/>
-            {username && <h3>{username}</h3>}
-            {email && <h3>{email}</h3>}
+            {!isLoggedIn &&
+            <form action="" onSubmit={handleLogin}>
+                <input type="text"  placeholder="name" value={username} onChange={(e)=>handleUsername(e)}/>
+                <input type="email"  placeholder="email" value={email} onChange={(e)=>handleEmail(e)}/>
+                <button type="submit">Login</button>
+            </form>
+            }
+            {isLoggedIn?(
+            <div>
+                <h1>Welcome Back</h1>
+                <p>Username:{username}</p>
+                <p>Email:{email}</p>
+            </div>
+           ):(<h1>Please Login</h1>)}
+            <LoginSection/>
         </div>
     )
 }
